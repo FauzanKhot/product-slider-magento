@@ -1,0 +1,37 @@
+<?php
+     $productCollection = $block->getProductCollectionbyIds();
+
+?>
+
+   <!--   <css src="https://use.fontawesome.com/releases/v5.7.1/css/all.css" src_type="url"/>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
+<section>
+<div class="product-list-cards" style="margin-top:20px">
+    <div class="product-list owl-carousel ">
+    <?php foreach($productCollection as $product):?>
+            <?php 
+                
+                // echo '<pre>';var_dump($product->getDggGgGGata());exit;    
+                // echo '<pre>';var_dump(get_class_methods($product));exit;
+                $imageDisplayArea = 'category_page_grid';
+                $itemName = $product->getName();
+                //echo $itemName;exit;
+                $itemPrice = $block->getProductPriceHtml($product);
+                //echo $itemPrice;exit;
+                $itemUrl = $product->getProductUrl();
+                //echo $itemUrl ;exit;
+                $productImage = $block->getImage($product, $imageDisplayArea);
+               // echo $productImage->tohtml();exit;
+             
+            ?> 
+          <div class="item card">
+               <a href="<?php echo$itemUrl?>">
+                    <?php echo $productImage->toHtml($itemUrl)?> 
+                    <h4><?php echo $itemName?></h4>
+                    <?php echo $itemPrice?>
+               </a>
+          </div>
+            <?php endforeach;?>
+         </div>
+    </div>
+    </section>    
